@@ -6,6 +6,7 @@ const info = document.getElementById('info');
 const chat = document.getElementById('chat');
 const style = document.getElementById('myStyle')
 const title = document.getElementById('title')
+let url = 'https://api.thecatapi.com/v1/images/search'
 
 const mode = {
         groot : {
@@ -304,14 +305,23 @@ const dialog = [
                 ],
                 response : "Je vais moins souvent au restos"
         },
+        {
+                keywords : [
+                        'photo',
+                        'chat',
+                ],
+                isAcat : true,
+                response : ''
+        },
+
 ]
 function getRandomInt(max) {
         return Math.floor(Math.random() * max);
 }
 
 function sendMessage() {
-        info.style.visibility = 'hidden';
-        title.style.visibility = 'hidden'
+        info.style.display = 'none';
+        title.style.display = 'none'
         chat.style.visibility = 'visible';
         chat.innerHTML += '<p class="messageSend">' + sender.value + '</p>';
         style.innerText = '.response {' +
@@ -342,6 +352,17 @@ function sendMessage() {
                                     console.log("true");
                                 return;
                         }
+                        else if(dialog[i].isAcat){
+                                fetch(url)
+                                    .then((response)=> response.json()
+                                        .then((data) => {
+                                            chat.innerHTML +=
+                                                '<img src="'+ data[0].url +'" id="rep" ' +
+                                                'class="response text-end rep" alt="chat" style="width: 500px; height: 500px">';
+                                        }
+                                    )
+                                )
+                        }
                         chat.innerHTML +=
                             '<p id="rep" class="response text-end rep">'+
                             dialog[i].response +
@@ -356,8 +377,9 @@ function sendMessage() {
                     '<p id="rep" class="response text-end rep">'+
                     mode.debugMe.debugMeArray[getRandomInt(mode.debugMe.debugMeArray.length)]+
                     '</p>';
-                //console.log('je suis dans le deuxieme if')
-        } else {
+                //console.log('je suis dans le deuxieme if'
+        }
+        else {
                         chat.innerHTML +=
                             '<p id="rep" class="response text-end rep"> Je suis Groot '+
                             mode.groot.punctuation[getRandomInt(mode.groot.punctuation.length)]+
