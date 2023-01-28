@@ -8,6 +8,9 @@ const style = document.getElementById('myStyle')
 const title = document.getElementById('title')
 let url = 'https://api.thecatapi.com/v1/images/search'
 
+
+
+
 const mode = {
         groot : {
                 /*En fonction de ce que tu écris il active le mode groot et cherche aléatoirement des caractéres spéciaux*/
@@ -318,11 +321,20 @@ const dialog = [
 function getRandomInt(max) {
         return Math.floor(Math.random() * max);
 }
-
+let pop = new Confetti('confetti');
 function sendMessage() {
         info.style.display = 'none';
         title.style.display = 'none'
         chat.style.visibility = 'visible';
+
+        confetti.click()
+
+        // var confettiSettings = { target: 'confetti' };
+        // var confetti = new ConfettiGenerator(confettiSettings);
+        // confetti.render();
+        // setTimeout(() => {
+        //         confetti.clear();
+        // }, 5000);
         chat.innerHTML += '<p class="messageSend">' + sender.value + '</p>';
         style.innerText = '.response {' +
             'overflow: hidden;' +
