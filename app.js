@@ -4,10 +4,10 @@
 let sender = document.getElementById('sender');
 const info = document.getElementById('info');
 const chat = document.getElementById('chat');
-const style = document.getElementById('myStyle')
-const title = document.getElementById('title')
-let url = 'https://api.thecatapi.com/v1/images/search'
-
+const style = document.getElementById('myStyle');
+const title = document.getElementById('title');
+let url = 'https://api.thecatapi.com/v1/images/search';
+let response = '';
 
 
 
@@ -318,14 +318,38 @@ const dialog = [
         },
 
 ]
+
+sender.addEventListener("keypress", function (event) {
+        if (event.key === 'Enter'){
+                event.preventDefault();
+                document.getElementById('btnSender').click();
+        }
+})
+
+let rep = document.getElementById('rep')
+var i = 0;
+// var txt = rep.innerHTML; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+function typeWriter(txt) {
+        if (i < txt.length) {
+                rep.innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+        }
+}
+
+
 function getRandomInt(max) {
         return Math.floor(Math.random() * max);
 }
+
 let pop = new Confetti('confetti');
+
 function sendMessage() {
         info.style.display = 'none';
         title.style.display = 'none'
-        chat.style.visibility = 'visible';
+        chat.style.display = 'block';
+        let classResponse = document.querySelectorAll('.response')
 
         confetti.click()
 
@@ -357,11 +381,22 @@ function sendMessage() {
                 //console.log(dialog[i].keywords)
                 if (keywordCheck(sender.value, dialog[i].keywords)){
                         if (dialog[i].multipleReponse){
+                                response = dialog[i].response[getRandomInt(dialog[i].response.length )]
                                 chat.innerHTML +=
-                                    '<p id="rep" class="response text-end rep">'+
-                                    dialog[i].response[getRandomInt(dialog[i].response.length )] +
+                                    '<p id="rep'+ classResponse.length +'" class="response text-end rep">'+
+                                     response +
                                     '</p>';
                                     console.log("true");
+
+                                let rep = document.getElementById('rep'+ (document.querySelectorAll('.response').length - 1))
+                                var typewriter = new Typewriter(rep, {
+                                        cursor: ""
+                                });
+
+                                typewriter.typeString(response)
+                                    .changeDelay(10)
+                                    .start();
+
                                 return;
                         }
                         else if(dialog[i].isAcat){
@@ -375,30 +410,46 @@ function sendMessage() {
                                     )
                                 )
                         }
+                        response = dialog[i].response
                         chat.innerHTML +=
-                            '<p id="rep" class="response text-end rep">'+
-                            dialog[i].response +
-                            '</p>';
-                
+                            '<p id="rep'+ classResponse.length +'" class="response text-end rep">' + response + '</p>';
+
+                        let rep = document.getElementById('rep' + (document.querySelectorAll('.response').length - 1))
+                        var typewriter = new Typewriter(rep, {
+                                cursor: ""
+                        });
+
+                        typewriter.typeString(response)
+                            .changeDelay(10)
+                            .start();
+
                         return;
                 }
                 
         }
         if (sender.value.indexOf('?') >= 0){
+                response = mode.debugMe.debugMeArray[getRandomInt(mode.debugMe.debugMeArray.length)]
                 chat.innerHTML +=
-                    '<p id="rep" class="response text-end rep">'+
-                    mode.debugMe.debugMeArray[getRandomInt(mode.debugMe.debugMeArray.length)]+
-                    '</p>';
+                    '<p id="rep'+ classResponse.length +'" class="response text-end rep">'+ response + '</p>';
                 //console.log('je suis dans le deuxieme if'
         }
         else {
+                         response = 'Je suis Groot'+ mode.groot.punctuation[getRandomInt(mode.groot.punctuation.length)]
                         chat.innerHTML +=
-                            '<p id="rep" class="response text-end rep"> Je suis Groot '+
-                            mode.groot.punctuation[getRandomInt(mode.groot.punctuation.length)]+
-                            '</p>';
+                            '<p id="rep'+ classResponse.length +'" class="response text-end rep">' + response + '</p>';
                 }
-        
+
         //console.log("false");
-    
+        if (chat) {
+                chat.scrollTop = chat.scrollHeight;
+        }
+        let rep = document.getElementById('rep' + (document.querySelectorAll('.response').length - 1))
+        var typewriter = new Typewriter(rep, {
+                cursor: ""
+        });
+
+        typewriter.typeString(response)
+            .changeDelay(10)
+            .start();
 }
 

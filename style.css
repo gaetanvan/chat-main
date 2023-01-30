@@ -152,3 +152,7 @@ img{
     height : 30px;
     margin-right :1rem;
 }
+#chat {
+	overflow: auto;
+	height: 570px;
+}

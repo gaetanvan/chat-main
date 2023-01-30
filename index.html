@@ -260,7 +260,7 @@
        
       <!-- MAIN CONTAINER -->
 		<div class="mainContainer d-flex">
-            <div class="row">
+            <div class="row" style="width: 100%">
 
 			<!-- Container left -->
 			<div class="left col h-100 col-lg-3 d-none d-lg-block ">
@@ -344,8 +344,8 @@
 						</div>
 					</div>
 				</div>
-				<div id="chat" style="visibility: hidden"></div>
-				<button id="confetti"></button>
+				<div id="chat" style="display: none"></div>
+				<button id="confetti" style="visibility: hidden"></button>
 				<!-- form -->
 				<div class="">
 					<form class="bodySearch d-flex">
@@ -356,7 +356,7 @@
 							aria-label="Text"
                             id="sender"
 						/>
-						<button type="button" id="btnSender" onclick="sendMessage()">Send</button>
+						<button type="button" id="btnSender" class="btn btn-dark" onclick="sendMessage()">Send</button>
 					</form>
 					<div>
 						<p class="textBottom container w-75  text-center ">
@@ -377,6 +377,7 @@
 		crossorigin="anonymous"
 	></script>
 	<script src="confetti.min.js"></script>
+	<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 	<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </html>
