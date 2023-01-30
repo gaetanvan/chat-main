@@ -316,6 +316,14 @@ const dialog = [
                 isAcat : true,
                 response : ''
         },
+        {
+            keywords : [
+                    'quel',
+                    'temps',
+            ],
+            time: true,
+            response : ''
+        },
 
 ]
 function getRandomInt(max) {
@@ -375,6 +383,15 @@ function sendMessage() {
                                     )
                                 )
                         }
+                        else if(dialog[i].time){
+                            var currentTime = new Date();
+                            var formattedTime = currentTime.toLocaleTimeString();
+                            chat.innerHTML +=
+                            '<p id="rep" class="response text-end rep"> the current time is'+
+                            formattedTime +
+                            '</p>';
+                            return;
+                        }
                         chat.innerHTML +=
                             '<p id="rep" class="response text-end rep">'+
                             dialog[i].response +
@@ -399,4 +416,4 @@ function sendMessage() {
                 }
         
         //console.log("false");
-            }
+    }
