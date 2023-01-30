@@ -7,6 +7,7 @@ const chat = document.getElementById('chat');
 const style = document.getElementById('myStyle');
 const title = document.getElementById('title');
 let url = 'https://api.thecatapi.com/v1/images/search';
+let weather = 'https://api.openweathermap.org/data/2.5/weather?q=38400&appid=bfacca461e182b1048f2e099b1dbd023&units=metric'
 let response = '';
 
 
@@ -316,7 +317,14 @@ const dialog = [
                 isAcat : true,
                 response : ''
         },
-
+        {
+                keywords : [
+                'meteo',
+                'grenoble',
+        ],
+            isAmeteo : true,
+            response : ''
+}
 ]
 
 sender.addEventListener("keypress", function (event) {
@@ -394,7 +402,7 @@ function sendMessage() {
                                 });
 
                                 typewriter.typeString(response)
-                                    .changeDelay(10)
+                                    .changeDelay(5)
                                     .start();
 
                                 return;
@@ -410,6 +418,29 @@ function sendMessage() {
                                     )
                                 )
                         }
+                        else if(dialog[i].isAmeteo){
+                                fetch(weather)
+                                    .then((response)=> response.json()
+                                        .then((data) => {
+                                                response = 'Le temps a Grenoble est a peu près de : ' + data['main']['temp']+ ' C°';
+                                                chat.innerHTML +=
+                                                    '<p id="rep'+ classResponse.length +'" class="response text-end rep">'+
+                                                    response +
+                                                    '</p>';
+                                            }
+                                        )
+                                    )
+                                let rep = document.getElementById('rep'+ (document.querySelectorAll('.response').length - 1))
+                                var typewriter = new Typewriter(rep, {
+                                        cursor: ""
+                                });
+
+                                typewriter.typeString(response)
+                                    .changeDelay(5)
+                                    .start();
+
+                                return;
+                        }
                         response = dialog[i].response
                         chat.innerHTML +=
                             '<p id="rep'+ classResponse.length +'" class="response text-end rep">' + response + '</p>';
@@ -420,7 +451,7 @@ function sendMessage() {
                         });
 
                         typewriter.typeString(response)
-                            .changeDelay(10)
+                            .changeDelay(5)
                             .start();
 
                         return;
@@ -449,7 +480,7 @@ function sendMessage() {
         });
 
         typewriter.typeString(response)
-            .changeDelay(10)
+            .changeDelay(5)
             .start();
 }
 
