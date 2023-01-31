@@ -430,15 +430,6 @@ function sendMessage() {
                                             }
                                         )
                                     )
-                                let rep = document.getElementById('rep'+ (document.querySelectorAll('.response').length - 1))
-                                var typewriter = new Typewriter(rep, {
-                                        cursor: ""
-                                });
-
-                                typewriter.typeString(response)
-                                    .changeDelay(5)
-                                    .start();
-
                                 return;
                         }
                         response = dialog[i].response
