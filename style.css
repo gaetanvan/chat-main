@@ -4,7 +4,21 @@ body {
 #exampleModalToggleLabel1,
 #exampleModalToggleLabel2,
 #exampleModalToggleLabel3{
-  margin-top: 50px !important;
+	margin-top: 50px !important;
+}
+body{
+	color: white;
+}
+.lightMode{
+	background-color: white;
+	color: rgb(181, 184, 182);
+
+}
+.navlightMode{
+	background-color: rgb(181, 184, 182);
+}
+.laa{
+	background-color : rgb(125, 125, 125);
 }
 .modal-content {
 	background-color: #202123 !important;
@@ -14,15 +28,15 @@ body {
 	margin: 0 auto;
 	border-radius: 5px;
 	padding: 3px;
-    margin-bottom:1rem;
-    display: flex;
-    align-items: center;
-    background-color: #2b2c2e;
+	margin-bottom:1rem;
+	display: flex;
+	align-items: center;
+	background-color: #2b2c2e;
 }
 
 .modalP {
 	background-color: #2b2c2e;
-    font-size: 0.8rem;
+	font-size: 0.8rem;
 }
 .btn {
 	color: #fff;
@@ -41,16 +55,20 @@ body {
 }
 
 .navbarLg{
-    background-color: #202123;
-	 height: 100vh !important;
+	background-color: #202123;
+	height: 100vh !important;
 
 }
 
 nav {
 	background-color: #343541;
-	 height: 5vh !important; 
+	height: 5vh !important;
 
-	
+
+}
+#chat{
+	overflow: auto;
+	height: 570px;
 }
 
 input[type="search"] {
@@ -72,8 +90,8 @@ h1 {
 
 .grid {
 	width: 80%;
-    
-    
+
+
 }
 
 .grid p {
@@ -127,7 +145,7 @@ h1 {
 .bi-list,
 .bi-x {
 	font-size: 1.5rem;
-    color:#fff !important;
+	color:#fff !important;
 }
 
 
@@ -137,22 +155,18 @@ h1 {
 
 .btn-close-offcanvas {
 	position: absolute !important;
-    right: -5vw;
-    top:1vh;
-    border : 1px solid #fff;
-    background-color: #343541 !important;
-	
-    
+	right: -5vw;
+	top:1vh;
+	border : 1px solid #fff;
+	background-color: #343541 !important;
+
+
 }
 .navbarResponsive {
-    height :95vh !important;
+	height :95vh !important;
 }
 img{
-    width : 30px;
-    height : 30px;
-    margin-right :1rem;
-}
-#chat {
-	overflow: auto;
-	height: 530px;
+	width : 30px;
+	height : 30px;
+	margin-right :1rem;
 }

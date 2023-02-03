@@ -475,3 +475,20 @@ function sendMessage() {
             .start();
 }
 
+let mode3 = document.querySelectorAll('.lightDarkMode')
+
+function lightMode(){
+        let mode = document.body;
+        let nav = document.querySelector(".toto");
+        nav.classList.toggle("navlightMode");
+        mode.classList.toggle("lightMode");
+        for(i = 0; i<=mode3.length; i++){
+                if(mode3[i].style.backgroundColor === "rgb(125, 125, 125)"){
+                        mode3[i].style.backgroundColor="rgb(62, 63, 75)";
+                }else{
+                        mode3[i].style.backgroundColor="rgb(125, 125, 125)";
+                }}
+
+
+}
+
